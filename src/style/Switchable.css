@@ -1,0 +1,11 @@
+.switchable {
+    width: 150px;
+}
+
+.switchable .switch {
+    border:1px solid grey;
+
+    height: 10px;
+    width: 100%;
+    cursor: pointer;
+}

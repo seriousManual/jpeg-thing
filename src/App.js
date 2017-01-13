@@ -4,6 +4,7 @@ import MatrixVisualisation from './components/matrix/visualisation/Matrix'
 import ColorMatrixVisualisation from './components/matrix/visualisation/ColorMatrix'
 import InputMatrixVisualisation from './components/matrix/visualisation/InputMatrix'
 import DrawingBoard from './components/DrawingBoard'
+import Switchable from './components/matrix/Switchable'
 
 import MatrixClick from './components/matrix/Click'
 
@@ -22,6 +23,7 @@ class App extends Component {
                     <ColorMatrixVisualisation matrix={matrix}/>
                 </MatrixClick>
                 <DrawingBoard matrix={matrix} onDraw={(x, y, value) => this._dispatch(x, y, value)}/>
+                <Switchable matrix={matrix}/>
             </div>
         )
     }
