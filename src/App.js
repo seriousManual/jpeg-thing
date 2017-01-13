@@ -23,7 +23,10 @@ class App extends Component {
                     <ColorMatrixVisualisation matrix={matrix}/>
                 </MatrixClick>
                 <DrawingBoard matrix={matrix} onDraw={(x, y, value) => this._dispatch(x, y, value)}/>
-                <Switchable matrix={matrix}/>
+                <Switchable>
+                    <ColorMatrixVisualisation matrix={matrix}/>
+                    <MatrixVisualisation matrix={matrix}/>
+                </Switchable>
             </div>
         )
     }

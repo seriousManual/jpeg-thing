@@ -1,7 +1,4 @@
-import React, { Component } from 'react';
-
-import ColorMatrixVisualisation from './visualisation/ColorMatrix'
-import Matrix from './visualisation/Matrix'
+import React, { Component, Children } from 'react';
 
 import '../../style/Switchable.css'
 
@@ -10,23 +7,26 @@ class Switchable extends Component {
         super()
 
         this.state = {
-            color: true
+            currentChildIndex: 0
         }
     }
 
     render () {
-        var {matrix} = this.props
-
-        var currentVisualisation = this.state.color ?
-            <ColorMatrixVisualisation matrix={matrix}/> :
-            <Matrix matrix={matrix}/>
+        var children = Children.toArray(this.props.children)
+        var child = children[this.state.currentChildIndex]
 
         return (
             <div className="switchable">
-                <div className="switch" onClick={() => this.setState({color: !this.state.color})}/>
-                {currentVisualisation}
+                <div className="switch" onClick={() => this._switch()}/>
+                {child}
             </div>
         )
+    }
+
+    _switch() {
+        var children = Children.toArray(this.props.children)
+        var nextIndex = (this.state.currentChildIndex + 1) % children.length
+        this.setState({currentChildIndex: nextIndex})
     }
 }
 
