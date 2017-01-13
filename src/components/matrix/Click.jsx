@@ -22,7 +22,7 @@ class MatrixClick extends Component {
     render () {
         var {children} = this.props
 
-        return <div className="matrixVisualisationClickWrapper" onClick={e => this._handle(e)} ref={panel => this._panel = panel}>{children}</div>
+        return <div className="matrixVisualisationClickWrapper" onMouseDown={e => this._handle(e)} ref={panel => this._panel = panel}>{children}</div>
     }
 }
 

@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 
 import ColorMatrixVisualisation from './matrix/visualisation/ColorMatrix'
 import MatrixClick from './matrix/Click'
-import Slider from 'rc-slider'
 
 import '../style/DrawingBoard.css'
-import 'rc-slider/assets/index.css';
 
 class DrawingBoard extends Component {
     constructor() {
@@ -25,9 +23,7 @@ class DrawingBoard extends Component {
 
         return (
             <div className="drawingBoard">
-                <Slider min={0} max={100} defaultValue={this.state.value} onChange={value => this.setState({value})} tipFormatter={null}/>
                 <div className="choosenColor" style={style}/>
-
                 <div className="pallette">{this._createPallette(8)}</div>
 
                 <MatrixClick size={matrix.getSize()} onSelect={(x, y) => this._dispatch(x, y)}>
@@ -45,7 +41,7 @@ class DrawingBoard extends Component {
         var colors = []
 
         var fraction = 100 / count
-        for (let i = 0; i < count; i++) {
+        for (let i = 0; i <= count; i++) {
             let mul = i * fraction
             let style = {
                 background: `rgb(${mul}%,${mul}%,${mul}%)`
