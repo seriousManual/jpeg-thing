@@ -1,0 +1,20 @@
+.drawingBoard {
+    width: 150px;
+}
+
+.drawingBoard .choosenColor {
+    width: 30px;
+    height: 30px;
+}
+
+.drawingBoard .pallette {
+
+}
+
+.drawingBoard .pallette .palletteEntry {
+    float: left;
+    margin: 2px;
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+}

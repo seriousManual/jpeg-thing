@@ -9,7 +9,7 @@ import './index.css'
 
 import Matrix from './lib/Matrix'
 
-const reducer = (state = {matrix: new Matrix(4, 100)}, action) => {
+const reducer = (state = {matrix: new Matrix(5, 50)}, action) => {
     if (action.type === 'SET_COORD') {
         var newMatrix = state.matrix.clone()
 
