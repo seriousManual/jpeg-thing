@@ -1,28 +1,33 @@
 import React, { Component } from 'react'
+
 import ColorMatrixVisualisation from './components/matrix/visualisation/ColorMatrix'
 import TextMatrixVisualisation from './components/matrix/visualisation/TextMatrix'
 import InputMatrixVisualisation from './components/matrix/visualisation/InputMatrix'
-import './App.css'
 
-import Matrix from './lib/Matrix'
+import MatrixClick from './components/matrix/Click'
+
+import './App.css'
 
 class App extends Component {
     render () {
-        var matrix = new Matrix(4)
-        matrix.set(0, 0, 100)
-        matrix.set(0, 1, 100)
-        matrix.set(1, 0, 50)
-        matrix.set(2, 0, 20)
-        matrix.set(2, 1, 80)
+        var {matrix} = this.props.state
+        var {store} = this.context
 
         return (
             <div className="app">
                 <ColorMatrixVisualisation matrix={matrix}/>
                 <TextMatrixVisualisation matrix={matrix}/>
-                <InputMatrixVisualisation matrix={matrix} onChange={(x, y, value) => matrix.set(x, y, value)}/>
+                <InputMatrixVisualisation matrix={matrix} onChange={(x, y, value) => store.dispatch({type: 'SET_COORD', x: x, y: y, value: value})}/>
+                <MatrixClick size={matrix.getSize()} onSelect={(x, y, value) => store.dispatch({type: 'SET_COORD', x: x, y: y, value: value})}>
+                    <ColorMatrixVisualisation matrix={matrix}/>
+                </MatrixClick>
             </div>
         )
     }
+}
+
+App.contextTypes = {
+    store: React.PropTypes.object.isRequired
 }
 
 export default App

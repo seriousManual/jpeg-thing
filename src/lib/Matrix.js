@@ -1,7 +1,11 @@
 class Matrix {
-    constructor (size) {
+    constructor (size, defaultValue = null) {
         this._size = size
         this._values = {}
+
+        if (defaultValue) {
+            this.forEach((x, y) => this.set(x, y, defaultValue))
+        }
     }
 
     set (x, y, value) {
@@ -22,6 +26,13 @@ class Matrix {
 
     getSize () {
         return this._size
+    }
+
+    clone() {
+        var clone = new Matrix(this._size)
+        clone._values = Object.assign({}, this._values)
+
+        return clone
     }
 
     _buildKey (x, y) {
