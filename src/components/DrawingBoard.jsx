@@ -15,9 +15,9 @@ class DrawingBoard extends Component {
     }
 
     render () {
-        var {matrix} = this.props
+        let {matrix} = this.props
 
-        var style = {
+        let style = {
             background: `rgb(${this.state.value}%,${this.state.value}%,${this.state.value}%)`
         }
 
@@ -33,14 +33,14 @@ class DrawingBoard extends Component {
         )
     }
 
-    _dispatch(x, y, value) {
+    _dispatch(x, y) {
         this.props.onDraw(x, y, this.state.value)
     }
 
     _createPallette(count) {
-        var colors = []
+        let colors = []
 
-        var fraction = 100 / count
+        let fraction = 100 / count
         for (let i = 0; i <= count; i++) {
             let mul = i * fraction
             let style = {
