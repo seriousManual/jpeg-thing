@@ -7,17 +7,13 @@ class InputMatrixVisualisation extends MatrixVisualisation {
     constructor() {
         super()
 
-        this._input = null
+        this._inputs = {}
     }
 
     _getContent(x, y, value) {
         var {onChange} = this.props
 
-        return <input onChange={e => onChange(x, y, this._input.value)} type="text" value={value} ref={input => this._input = input} />
-    }
-
-    _getStyle(style, x, y, value) {
-        return style
+        return <input onChange={e => onChange(x, y, this._inputs[x + '-' + y].value)} type="text" value={value} ref={input => this._inputs[x + '-' + y] = input} />
     }
 }
 

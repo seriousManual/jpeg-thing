@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
+import MatrixVisualisation from './components/matrix/visualisation/Matrix'
 import ColorMatrixVisualisation from './components/matrix/visualisation/ColorMatrix'
-import TextMatrixVisualisation from './components/matrix/visualisation/TextMatrix'
 import InputMatrixVisualisation from './components/matrix/visualisation/InputMatrix'
 
 import MatrixClick from './components/matrix/Click'
@@ -16,7 +16,7 @@ class App extends Component {
         return (
             <div className="app">
                 <ColorMatrixVisualisation matrix={matrix}/>
-                <TextMatrixVisualisation matrix={matrix}/>
+                <MatrixVisualisation matrix={matrix}/>
                 <InputMatrixVisualisation matrix={matrix} onChange={(x, y, value) => store.dispatch({type: 'SET_COORD', x: x, y: y, value: value})}/>
                 <MatrixClick size={matrix.getSize()} onSelect={(x, y, value) => store.dispatch({type: 'SET_COORD', x: x, y: y, value: value})}>
                     <ColorMatrixVisualisation matrix={matrix}/>

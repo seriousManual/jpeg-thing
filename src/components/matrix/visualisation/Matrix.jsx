@@ -25,11 +25,11 @@ class MatrixVisualisation extends Component {
     }
 
     _getContent(x, y, value) {
-        throw new Error('_getContent missing')
+        return value
     }
 
     _getStyle(style, x, y, value) {
-        throw new Error('_getStyle missing')
+        return style
     }
 }
 
