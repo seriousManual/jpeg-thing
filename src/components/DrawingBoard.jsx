@@ -46,7 +46,7 @@ class DrawingBoard extends Component {
             let style = {
                 background: `rgb(${mul}%,${mul}%,${mul}%)`
             }
-            colors.push(<div key={mul} className="palletteEntry" style={style} onClick={() => this.setState({value: mul})}/>)
+            colors.push(<div key={mul} className="palletteEntry" style={style} onClick={() => this.setState({value: parseInt(mul, 10)})}/>)
         }
         return colors
     }

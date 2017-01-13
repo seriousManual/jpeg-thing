@@ -11,9 +11,11 @@ import Matrix from './lib/Matrix'
 
 const reducer = (state = {matrix: new Matrix(5, 50)}, action) => {
     if (action.type === 'SET_COORD') {
+        var value = Math.max(Math.min(action.value, 100), 0)
+
         var newMatrix = state.matrix.clone()
 
-        newMatrix.set(action.x, action.y, action.value)
+        newMatrix.set(action.x, action.y, value)
 
         return {
             ...state,

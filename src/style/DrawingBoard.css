@@ -8,12 +8,11 @@
 }
 
 .drawingBoard .pallette {
-
+    display: flex;
+    justify-content: space-around;
 }
 
 .drawingBoard .pallette .palletteEntry {
-    float: left;
-    margin: 2px;
     width: 10px;
     height: 10px;
     cursor: pointer;
