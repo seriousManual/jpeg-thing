@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import '../../../style/MatrixVisualisation.css'
 
 class MatrixVisualisation extends Component {
+    shouldComponentUpdate(nextProps) {
+        return this.props.matrix === nextProps.matrix
+    }
+    
     render () {
         var {matrix} = this.props
         var size = matrix.getSize()
