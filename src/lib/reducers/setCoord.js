@@ -1,7 +1,11 @@
 import Matrix from '../Matrix'
 
-function createSetCoordReducer(size, defaultValue = 50) {
-    return (state = {matrix: new Matrix(size, defaultValue)}, action = {}) => {
+function createSetCoordReducer(defaultValue) {
+    var defaultState = {
+        matrix: defaultValue
+    }
+
+    return (state = defaultState, action = {}) => {
         if (action.type === 'SET_COORD') {
             var value = !Array.isArray(action.value) ? Math.max(Math.min(action.value, 255), 0) : value
 

@@ -1,3 +1,5 @@
+import Matrix from './Matrix'
+
 export function rgbToYCbCr([r, g, b]) {
     return [
         0.299 * r + 0.587 * g + 0.114 * b,
@@ -8,6 +10,16 @@ export function rgbToYCbCr([r, g, b]) {
 
 export function yCbCrToRgb([y, cb, cr]) {
     return [
-
+        y + 1.4 * (cr - 128),
+        y + -0.343 * (cb - 128) + -0.711 * (cr - 128),
+        y + 1.765 * (cb - 128)
     ]
+}
+
+export function rgbToYCbCrMatrix(rgbMatrix) {
+    return rgbMatrix.reduce((x, y, value, carry) => carry.set(x, y, rgbToYCbCr(value)), new Matrix(rgbMatrix.getSize()))
+}
+
+export function yCbCrToRgbMatrix(yCbCrMatrix) {
+    return yCbCrMatrix.reduce((x, y, value, carry) => carry.set(x, y, yCbCrToRgb(value)), new Matrix(yCbCrMatrix.getSize()))
 }

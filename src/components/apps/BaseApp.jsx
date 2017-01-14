@@ -10,11 +10,12 @@ import DrawingBoard from '../DrawingBoard'
 import Switchable from '../matrix/Switchable'
 import MatrixClick from '../matrix/Click'
 
+import Matrix from '../../lib/Matrix'
 import createSetCoordReducer from '../../lib/reducers/setCoord'
 
 class BaseApp extends MatrixBasedSubApp {
     _getReducer() {
-        return createSetCoordReducer(8, 127)
+        return createSetCoordReducer(new Matrix(8))
     }
 
     _render () {
@@ -22,7 +23,7 @@ class BaseApp extends MatrixBasedSubApp {
         var {matrix} = state
 
         return (
-            <div className="app">
+            <div className="baseApp">
                 <ColorMatrixVisualisation matrix={matrix}/>
                 <MatrixVisualisation matrix={matrix}/>
                 <InputMatrixVisualisation matrix={matrix} onChange={(x, y, value) => this._dispatch(x, y, value)} />

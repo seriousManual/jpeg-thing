@@ -1,11 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import BaseApp from './components/apps/BaseApp'
+import ColorConversionApp from './components/apps/ColorConversionApp'
 import './index.css'
 
 function render() {
-    ReactDOM.render(<div><BaseApp/></div>, document.getElementById('root'))
+    ReactDOM.render(<div><ColorConversionApp/></div>, document.getElementById('root'))
 }
 
 render()
