@@ -34,7 +34,6 @@ class DrawingBoard extends Component {
     }
 
     _dispatch(x, y) {
-        console.log(this.state.value);
         this.props.onDraw(x, y, this.state.value)
     }
 

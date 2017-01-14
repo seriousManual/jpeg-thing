@@ -14,7 +14,7 @@ import createSetCoordReducer from '../../lib/reducers/setCoord'
 
 class BaseApp extends MatrixBasedSubApp {
     _getReducer() {
-        return createSetCoordReducer(8, 50)
+        return createSetCoordReducer(8, 127)
     }
 
     _render () {
