@@ -10,11 +10,11 @@ import DrawingBoard from '../DrawingBoard'
 import Switchable from '../matrix/Switchable'
 import MatrixClick from '../matrix/Click'
 
-import createSetCoordReduser from '../../lib/reducers/setCoord'
+import createSetCoordReducer from '../../lib/reducers/setCoord'
 
 class BaseApp extends MatrixBasedSubApp {
     _getReducer() {
-        return createSetCoordReduser(4, 30)
+        return createSetCoordReducer(4, 50)
     }
 
     _render () {
