@@ -10,7 +10,7 @@ class DrawingBoard extends Component {
         super()
 
         this.state = {
-            value: 50
+            value: 255
         }
     }
 
@@ -34,21 +34,28 @@ class DrawingBoard extends Component {
     }
 
     _dispatch(x, y) {
+        console.log(this.state.value);
         this.props.onDraw(x, y, this.state.value)
     }
 
     _createPallette(count) {
         let colors = []
 
-        let fraction = 100 / count
+        let fraction = 255 / count
         for (let i = 0; i <= count; i++) {
             let mul = i * fraction
+            let mulPercent = this._toPercent(mul)
             let style = {
-                background: `rgb(${mul}%,${mul}%,${mul}%)`
+                background: `rgb(${mulPercent}%,${mulPercent}%,${mulPercent}%)`
             }
-            colors.push(<div key={mul} className="palletteEntry" style={style} onClick={() => this.setState({value: parseInt(mul, 10)})}/>)
+
+            colors.push(<div key={mul} className="palletteEntry" style={style} onClick={() => this.setState({value: mul})}/>)
         }
         return colors
+    }
+
+    _toPercent(value) {
+        return (value / 255) * 100
     }
 }
 

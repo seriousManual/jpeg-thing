@@ -12,9 +12,13 @@ class ColorMatrixVisualisation extends MatrixVisualisation {
         var g = Array.isArray(value) ? value[1] : value
         var b = Array.isArray(value) ? value[2] : value
 
-        style.backgroundColor = `rgb(${r}%, ${g}%, ${b}%)`
+        style.backgroundColor = `rgb(${this._toPercent(r)}%, ${this._toPercent(g)}%, ${this._toPercent(b)}%)`
 
         return style
+    }
+
+    _toPercent(value) {
+        return (value / 255) * 100
     }
 }
 
