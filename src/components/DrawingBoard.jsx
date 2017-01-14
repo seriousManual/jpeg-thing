@@ -45,8 +45,17 @@ class DrawingBoard extends Component {
         for (let i = 0; i <= count; i++) {
             let mul = i * fraction
             let mulPercent = this._toPercent(mul)
+
+            var color = `rgb(${mulPercent}%,${mulPercent}%,${mulPercent}%)`
             let style = {
-                background: `rgb(${mulPercent}%,${mulPercent}%,${mulPercent}%)`
+                background: color,
+                border: '1px solid ' + color,
+                outline: '1px solid white'
+            }
+
+            if (this.state.value === mul) {
+                style.border = '1px solid white'
+                style.outline = '1px solid black'
             }
 
             colors.push(<div key={mul} className="palletteEntry" style={style} onClick={() => this.setState({value: mul})}/>)
