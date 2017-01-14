@@ -3,7 +3,7 @@ import '../../../style/MatrixVisualisation.css'
 
 class MatrixVisualisation extends Component {
     shouldComponentUpdate(nextProps) {
-        return this.props.matrix === nextProps.matrix
+        return this.props.matrix !== nextProps.matrix
     }
     
     render () {
