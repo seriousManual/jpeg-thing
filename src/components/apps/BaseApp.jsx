@@ -1,18 +1,25 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-import MatrixVisualisation from './components/matrix/visualisation/Matrix'
-import ColorMatrixVisualisation from './components/matrix/visualisation/ColorMatrix'
-import InputMatrixVisualisation from './components/matrix/visualisation/InputMatrix'
-import DrawingBoard from './components/DrawingBoard'
-import Switchable from './components/matrix/Switchable'
+import MatrixBasedSubApp from '../MatrixBasedSubApp'
 
-import MatrixClick from './components/matrix/Click'
+import MatrixVisualisation from '../matrix/visualisation/Matrix'
+import ColorMatrixVisualisation from '../matrix/visualisation/ColorMatrix'
+import InputMatrixVisualisation from '../matrix/visualisation/InputMatrix'
+import DrawingBoard from '../DrawingBoard'
 
-import './App.css'
+import Switchable from '../matrix/Switchable'
+import MatrixClick from '../matrix/Click'
 
-class App extends Component {
-    render () {
-        var {matrix} = this.props.state
+import createSetCoordReduser from '../../lib/reducers/setCoord'
+
+class BaseApp extends MatrixBasedSubApp {
+    _getReducer() {
+        return createSetCoordReduser(4, 30)
+    }
+
+    _render () {
+        var state = this._store.getState()
+        var {matrix} = state
 
         return (
             <div className="app">
@@ -32,12 +39,8 @@ class App extends Component {
     }
 
     _dispatch(x, y, value) {
-        this.context.store.dispatch({type: 'SET_COORD', x: x, y: y, value: value})
+        this._store.dispatch({type: 'SET_COORD', x: x, y: y, value: value})
     }
 }
 
-App.contextTypes = {
-    store: React.PropTypes.object.isRequired
-}
-
-export default App
+export default BaseApp
