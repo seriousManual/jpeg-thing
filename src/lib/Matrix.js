@@ -42,7 +42,6 @@ class Matrix {
         return this.reduce((x, y, value, initial) => {
             return initial.set(x, y, callback(x, y, value))
         }, new Matrix(this.getSize()))
-
     }
 
     getSize () {

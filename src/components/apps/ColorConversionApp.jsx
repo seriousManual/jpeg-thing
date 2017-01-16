@@ -7,6 +7,7 @@ import ColorMatrixVisualisation from '../matrix/visualisation/ColorMatrix'
 import Matrix from '../../lib/Matrix'
 import {rgbToYCbCrMatrix, yCbCrToRgbMatrix} from '../../lib/colorConversion'
 import {splitTupelMatrix} from '../../lib/splitTupelMatrix'
+import {mergeTupelMatrices} from '../../lib/mergeTupelMatrices'
 import {subSample, overSample} from '../../lib/sampling'
 
 class ColorConversionApp extends MatrixBasedSubApp {
@@ -39,6 +40,7 @@ class ColorConversionApp extends MatrixBasedSubApp {
             state.CBMatrixReSampled = overSample(state.CBMatrixSubSampled, 2)
             state.CRMatrixReSampled = overSample(state.CRMatrixSubSampled, 2)
 
+            state.resultMatrix = yCbCrToRgbMatrix(mergeTupelMatrices(state.yMatrix, state.CBMatrixReSampled, state.CRMatrixReSampled))
 
             return state
         }
@@ -46,7 +48,7 @@ class ColorConversionApp extends MatrixBasedSubApp {
 
 
     _render () {
-        var {baseMatrix, yMatrix, CBMatrix, CRMatrix, CBMatrixSubSampled, CRMatrixSubSampled, CBMatrixReSampled, CRMatrixReSampled} = this._store.getState()
+        var {baseMatrix, yMatrix, CBMatrix, CRMatrix, CBMatrixSubSampled, CRMatrixSubSampled, CBMatrixReSampled, CRMatrixReSampled, resultMatrix} = this._store.getState()
 
         return (
             <div className="colorConversionsApp">
@@ -59,6 +61,7 @@ class ColorConversionApp extends MatrixBasedSubApp {
                 <ColorMatrixVisualisation matrix={CRMatrixSubSampled}/>
                 <ColorMatrixVisualisation matrix={CBMatrixReSampled}/>
                 <ColorMatrixVisualisation matrix={CRMatrixReSampled}/>
+                <ColorMatrixVisualisation matrix={resultMatrix}/>
             </div>
         )
     }
