@@ -18,9 +18,6 @@ class ColorMatrixVisualisation extends MatrixVisualisation {
     }
 
     _toPercent(value) {
-        if (value < 0) {
-            console.log(value, (value / 255) * 100);
-        }
         return (value / 255) * 100
     }
 }

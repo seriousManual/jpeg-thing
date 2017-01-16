@@ -4,21 +4,21 @@ import MatrixBasedSubApp from '../MatrixBasedSubApp'
 
 import ColorMatrixVisualisation from '../matrix/visualisation/ColorMatrix'
 
-import Matrix from '../../lib/Matrix'
 import {rgbToYCbCrMatrix, yCbCrToRgbMatrix} from '../../lib/colorConversion'
 import {splitTupelMatrix} from '../../lib/splitTupelMatrix'
 import {mergeTupelMatrices} from '../../lib/mergeTupelMatrices'
 import {subSample, overSample} from '../../lib/sampling'
+import {createColorMatrix} from '../../lib/createMatrix'
 
 class ColorConversionApp extends MatrixBasedSubApp {
     _getReducer() {
         return (state, action) => {
             if (!state) {
-                state = updateState({baseMatrix: this._createRandomMatrix()})
+                state = updateState({baseMatrix: createColorMatrix()})
             }
 
             if (action.type === 'NEW_MATRIX') {
-                var newMatrix = this._createRandomMatrix()
+                var newMatrix = createColorMatrix()
 
                 return updateState({baseMatrix: newMatrix})
             }
@@ -64,24 +64,6 @@ class ColorConversionApp extends MatrixBasedSubApp {
                 <ColorMatrixVisualisation matrix={resultMatrix}/>
             </div>
         )
-    }
-
-    _createRandomMatrix() {
-        var m = new Matrix(8);
-
-        var r = parseInt(Math.random() * 256, 10)
-        var g = parseInt(Math.random() * 256, 10)
-        var b = parseInt(Math.random() * 256, 10)
-
-        m.forEach((x, y) => {
-            r += (Math.random() < 0.5 ? -1 : 1) * (Math.random() * Math.random() * 100)
-            g += (Math.random() < 0.5 ? -1 : 1) * (Math.random() * Math.random() * 100)
-            b += (Math.random() < 0.5 ? -1 : 1) * (Math.random() * Math.random() * 100)
-
-            m.set(x, y, [r, g, b])
-        })
-
-        return m
     }
 }
 
