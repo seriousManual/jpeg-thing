@@ -4,11 +4,7 @@ class Matrix {
         this._values = {}
 
         if (defaultValue) {
-            if (typeof defaultValue === 'function') {
-                this.forEach((x, y) => this.set(x, y, defaultValue()))
-            } else {
-                this.forEach((x, y) => this.set(x, y, defaultValue))
-            }
+            this.forEach((x, y) => this.set(x, y, typeof defaultValue === 'function' ? defaultValue(x, y) : defaultValue))
         }
     }
 
