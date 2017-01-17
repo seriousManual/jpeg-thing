@@ -1,4 +1,3 @@
-import Matrix from './Matrix'
 import colorClamp from './colorClamp'
 
 export function rgbToYCbCr ([r, g, b]) {
@@ -18,9 +17,9 @@ export function yCbCrToRgb ([y, cb, cr]) {
 }
 
 export function rgbToYCbCrMatrix (rgbMatrix) {
-    return rgbMatrix.reduce((x, y, value, carry) => carry.set(x, y, rgbToYCbCr(value)), new Matrix(rgbMatrix.getSize()))
+    return rgbMatrix.map((x, y, value) => rgbToYCbCr(value))
 }
 
 export function yCbCrToRgbMatrix (yCbCrMatrix) {
-    return yCbCrMatrix.reduce((x, y, value, carry) => carry.set(x, y, yCbCrToRgb(value)), new Matrix(yCbCrMatrix.getSize()))
+    return yCbCrMatrix.map((x, y, value) => yCbCrToRgb(value))
 }

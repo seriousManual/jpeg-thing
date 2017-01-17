@@ -27,17 +27,13 @@ class Matrix {
     }
 
     reduce (callback, initial) {
-        this.forEach((x, y, value) => {
-            initial = callback(x, y, value, initial)
-        })
+        this.forEach((x, y, value) => initial = callback(x, y, value, initial))
 
         return initial
     }
 
     map (callback) {
-        return this.reduce((x, y, value, initial) => {
-            return initial.set(x, y, callback(x, y, value))
-        }, new Matrix(this.getSize()))
+        return this.reduce((x, y, value, carry) => carry.set(x, y, callback(x, y, value)), new Matrix(this.getSize()))
     }
 
     getSize () {
