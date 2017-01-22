@@ -4,11 +4,7 @@ class Matrix {
         this._values = {}
 
         if (defaultValue) {
-            if (typeof defaultValue === 'function') {
-                this.forEach((x, y) => this.set(x, y, defaultValue()))
-            } else {
-                this.forEach((x, y) => this.set(x, y, defaultValue))
-            }
+            this.forEach((x, y) => this.set(x, y, typeof defaultValue === 'function' ? defaultValue(x, y) : defaultValue))
         }
     }
 
@@ -31,17 +27,13 @@ class Matrix {
     }
 
     reduce (callback, initial) {
-        this.forEach((x, y, value) => {
-            initial = callback(x, y, value, initial)
-        })
+        this.forEach((x, y, value) => initial = callback(x, y, value, initial))
 
         return initial
     }
 
     map (callback) {
-        return this.reduce((x, y, value, initial) => {
-            return initial.set(x, y, callback(x, y, value))
-        }, new Matrix(this.getSize()))
+        return this.reduce((x, y, value, carry) => carry.set(x, y, callback(x, y, value)), new Matrix(this.getSize()))
     }
 
     getSize () {

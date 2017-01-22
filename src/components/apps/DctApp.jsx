@@ -12,11 +12,7 @@ import '../../style/DctApp.css'
 class ColorConversionApp extends MatrixBasedSubApp {
     _getReducer() {
         return (state, action) => {
-            if (!state) {
-                state = updateState({baseMatrix: createMatrix()})
-            }
-
-            if (action.type === 'NEW_MATRIX') {
+            if (!state || action.type === 'NEW_MATRIX') {
                 return updateState({baseMatrix: createMatrix()})
             }
 

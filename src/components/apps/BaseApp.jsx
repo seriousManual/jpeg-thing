@@ -19,8 +19,7 @@ class BaseApp extends MatrixBasedSubApp {
     }
 
     _render () {
-        var state = this._store.getState()
-        var {matrix} = state
+        var {matrix} = this._store.getState()
 
         return (
             <div className="baseApp">
