@@ -1,0 +1,13 @@
+.dctApp {
+
+}
+
+.dctApp .matrixVisualisation {
+    width: 250px;
+    height: 250px;
+}
+
+.dctApp .matrixVisualisation div {
+    font-size: 14px;
+    line-height: 32px;
+}

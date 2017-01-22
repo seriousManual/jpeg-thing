@@ -10,6 +10,8 @@ import {mergeTupelMatrices} from '../../lib/mergeTupelMatrices'
 import {subSample, overSample} from '../../lib/sampling'
 import {createColorMatrix} from '../../lib/createMatrix'
 
+import '../style/ColorConversionApp.css'
+
 class ColorConversionApp extends MatrixBasedSubApp {
     _getReducer() {
         return (state, action) => {

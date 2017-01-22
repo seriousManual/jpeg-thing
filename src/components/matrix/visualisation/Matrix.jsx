@@ -29,7 +29,7 @@ class MatrixVisualisation extends Component {
     }
 
     _getContent(x, y, value) {
-        return value
+        return Math.round(value)
     }
 
     _getStyle(style, x, y, value) {

@@ -2,7 +2,7 @@ import Matrix from './Matrix'
 import colorClamp from './colorClamp'
 
 export function createColorMatrix() {
-    var m = new Matrix(8);
+    var m = new Matrix(8)
 
     var r = parseInt(Math.random() * 256, 10)
     var g = parseInt(Math.random() * 256, 10)
@@ -14,6 +14,18 @@ export function createColorMatrix() {
         b += (Math.random() < 0.5 ? -1 : 1) * (Math.random() * Math.random() * 100)
 
         m.set(x, y, [colorClamp(r), colorClamp(g), colorClamp(b)])
+    })
+
+    return m
+}
+
+export function createMatrix() {
+    var m = new Matrix(8)
+
+    var i = parseInt(Math.random() * 256, 10)
+    m.forEach((x, y) => {
+        i += (Math.random() < 0.5 ? -1 : 1) * (Math.random() * Math.random() * 50)
+        m.set(x, y, colorClamp(i))
     })
 
     return m

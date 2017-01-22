@@ -1,11 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import ColorConversionApp from './components/apps/ColorConversionApp'
+import DctApp from './components/apps/DctApp'
 import './index.css'
 
 function render() {
-    ReactDOM.render(<div><ColorConversionApp/></div>, document.getElementById('root'))
+    ReactDOM.render(<div><DctApp/></div>, document.getElementById('root'))
 }
 
 render()
